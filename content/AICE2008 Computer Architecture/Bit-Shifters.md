@@ -1,0 +1,20 @@
+Bit-Shifters are one of the simplest operations that can be performed on a register, but despite that there are several methods of performing them.
+### Unidirectional Shift-by-One Shifter
+To shift by a single bit is very simple - each of the bits in the input register are connected to two bits in the output register via a 1-to-2 mux. If no shift is selected, then the mux forwards the bit to the same position in the output, otherwise it forwards it to the next position in the register.
+### Bidirectional Shift-by-One Shifter
+This is a simple alteration on the unidirectional shift-by-one shifter. Instead of using a 1-to-2 mux, you use a 1-to-3 mux, with one output path leading to the bit position before the input position, one to the same position and one to the next position. This is the simplest commonly used shifter, but only by the fact that it can be used to build more complex shifters.
+### Unidirectional N-Bit Shifter
+![float-right|300](./images/Single%20Direction%20N%20bit%20shifter.png)An N-bit shifter allows for shifts by some $n$ within a supported range. While conceptually, they can be thought of an extension of the unidirectional shift-by-one shifter, using 1-to-n+1 muxes, this is not the best way of conceptualising them. Instead, it is best thought of as a grid of wires, connected by pass transistors, when a specific shift is desired, the right set of pass transistors are turned on, and the input lines are connected to the output lines. 
+Note that in the diagram to the right, setting S1 to high would give a shift by one, setting S2 instead gives a shift by two, S3 results in a shift by three and so on.
+### Bidirectional N-Bit Shifter
+Like how adapting a unidirectional shift-by-one shifter to bidirectional was a case of increasing the size of the mux, adapting a unidirectional N-bit shifter to work bidirectionally is also simple. However, instead of increasing the mux, you instead add another set of muxes orthogonal to the set for shifting in one direction. Referencing the diagram above, you would see a set of control lines diagonally from top right to bottom left, with accompanying pass transistors to allow for signals to go from higher position inputs to lower position outputs.
+### Logarithmic Shifters
+A logarithmic shifter is, in some sense a set of shift-by-one shifters placed one after the other. However, after the first shifter, they aren't shift by one. They instead shift by two, then four, then eight and so on in powers of two. This allows arbitrary combinations of shifters to be active at once, allowing for much faster and simpler arbitrary shifts. The critical path on such a shifter is simply the time to set $\lceil\log_2(n)\rceil$ muxes, where $n$ is the number of bits in the number being shifted. 
+
+For example, to shift by seven, you would activate the shift by one layer, the shift by two layer and the shift by four layer, and set all other layers to pass through instead of shifting. 
+
+This design can also be made bidirectional by swapping 1-to-2 muxes for 1-to-3 muxes, with each stage capable of shifting left and right by 1, 2, 4, 8, etc. 
+### Barrel Shifters
+A barrel shifter is a special type of shifter capable of _rotation_, which is broadly similar to shifting, except that bits that are shifted out of the register are then used to fill in the bits being added. Because rotation is a modular operation, it is possible to use only one type of rotation to achieve both left and right rotation by carefully choosing a rotation amount that is equal to the desired rotation $\bmod n$, where $n$ is the number of bits in the register being rotated.
+
+Barrel shifters can also be used to create shifts of all kinds rather than rotations. They do this by, at each stage using a 4-to-1 mux, switching between literal 0, literal 1, the sign bit of the number and the value just shifted off. Then that is used to 'fill' in the missing bit. Using this structure, it is trivial to make an efficient shifter for all values by combining barrel shifting with the layout of a logarithmic shifter.

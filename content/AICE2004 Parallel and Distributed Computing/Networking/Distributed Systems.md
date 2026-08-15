@@ -1,0 +1,3 @@
+#software/networking/application-layer 
+A _distributed system_ is a network of computers that are linked together to complete single tasks. They achieve this by utilising 'message passing' - this is, simply put, just different computers in the network sharing information by passing discrete 'packets' of information between each other, as opposed to utilising shared pools of memory.
+Such message passing comes with both advantages and disadvantages - while it allows for easy scaling and fault-tolerant operation, it also is more complex to design and operate such a system, and distributed systems can often suffer from high-latency and data consistency problems between instances.

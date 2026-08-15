@@ -1,0 +1,3 @@
+Some processors are _superscalar_, meaning they can achieve an IPC > 1. They generally do this by using multiple pipelines, or by duplicating part of a pipeline. For example, ARM A8 has two instruction issue - completely duplicated ALU pipelines allowing for complete parallel operation. On the other hand, you can also have asymmetric pipelines, for example, one for integer instructions and one for floating-point instructions. 
+
+One way to make use of the ability to utilise multiple parallel pipelines is to place between pipeline stages a queuing system. 

@@ -1,0 +1,17 @@
+{
+  "name": "pdf-page",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local Quartz 5 page type plugin that gives every PDF in content/ a wrapper page, so it shows up in the explorer, search, and content index instead of only being reachable by direct URL. Generated entirely in memory at build time — nothing is written to content/.",
+  "main": "./dist/index.js",
+  "quartz": {
+    "name": "pdf-page",
+    "displayName": "PDF Page",
+    "description": "Generates a virtual wrapper page for every PDF in the vault so it appears in the file tree/search, without writing markdown files to content/.",
+    "category": "pageType",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "defaultEnabled": true
+  }
+}

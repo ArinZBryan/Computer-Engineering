@@ -1,0 +1,31 @@
+- [x] [aice2010intro](https://moodle.ecs.soton.ac.uk/pluginfile.php/76666/mod_resource/content/0/aice2010Intro.pdf) (Introduction)
+- [x] [aice2010a](https://moodle.ecs.soton.ac.uk/pluginfile.php/76836/mod_resource/content/0/aice2010a.pdf) (Introduction Continued)
+- [x] [aice2010b](https://moodle.ecs.soton.ac.uk/pluginfile.php/76839/mod_resource/content/0/aice2010b.pdf) (Systems)
+- [x] [aice2010c](https://moodle.ecs.soton.ac.uk/pluginfile.php/77168/mod_resource/content/0/aice2010c.pdf) (Transfer Functions, Stability and Response)
+- [x] [aice2010d](https://moodle.ecs.soton.ac.uk/pluginfile.php/77186/mod_resource/content/0/aice2010d.pdf) (Fourier Series)
+- [x] [aice2010e](https://moodle.ecs.soton.ac.uk/pluginfile.php/77543/mod_resource/content/0/aice2010e.pdf) (Fourier Transform)
+- [ ] How to sketch nyquist diagrams, how to sketch asymptotes of bode plots
+- [ ] [aice2010t1](https://moodle.ecs.soton.ac.uk/pluginfile.php/77544/mod_resource/content/0/aice2010t1.pdf) (Tutorial Sheet 1)
+- [x] [aice2010f](https://moodle.ecs.soton.ac.uk/pluginfile.php/77695/mod_resource/content/0/aice2010f.pdf) (Analogue Filter Design)
+- [ ] Add Examples from tutorial sheet 2 for creating filters
+- [ ] [aice2010g](https://moodle.ecs.soton.ac.uk/pluginfile.php/78058/mod_resource/content/0/aice2010g.pdf) (Discrete-Time Signals Basics)
+- [ ] [aice2010h](https://moodle.ecs.soton.ac.uk/pluginfile.php/78018/mod_resource/content/0/AICE2010h.pdf) (Discrete Fourier Transform)
+- [ ] [aice2010i](https://moodle.ecs.soton.ac.uk/pluginfile.php/78019/mod_resource/content/0/aice2010i.pdf) (Z-Transform)
+- [ ] [aice2010j](https://moodle.ecs.soton.ac.uk/pluginfile.php/78272/mod_resource/content/0/AICE2010j.pdf) (Digital Filter Design)
+- [ ] [aice2010k](https://moodle.ecs.soton.ac.uk/pluginfile.php/78649/mod_resource/content/0/AICE2010k.pdf) (Design By Emulation)
+- [ ] [aice2010t2](https://moodle.ecs.soton.ac.uk/pluginfile.php/78650/mod_resource/content/0/aice2010t2.pdf) (Tutorial Sheet 2)
+- [ ] [aice2010l](https://moodle.ecs.soton.ac.uk/pluginfile.php/78663/mod_resource/content/0/aice2010l.pdf) (Control Systems Part 1)
+- [ ] [aice2010m](https://moodle.ecs.soton.ac.uk/pluginfile.php/78861/mod_resource/content/0/aice2010m.pdf) (Control Systems Part 2)
+- [ ] [coursew2026](https://moodle.ecs.soton.ac.uk/pluginfile.php/79208/mod_resource/content/0/coursew2026.pdf) (Coursework)
+- [ ] [aice2010n](https://moodle.ecs.soton.ac.uk/pluginfile.php/79775/mod_resource/content/0/aice2010n.pdf) (Nyquist and Bode Analysis)
+- [ ] [aice2010t3](https://moodle.ecs.soton.ac.uk/pluginfile.php/79874/mod_resource/content/0/AICE2010t3.pdf) (Tutorial Sheet 3)
+
+Maths to learn by heart
+- finding the Fourier Series of arbitrary function
+- taking laplace transforms
+- sketching nyquist loci of transfer functions
+- sketching asymptotic bode plots
+- butterworth filter construction equations
+- root loci construction
+- bode gain plot sketching
+- 

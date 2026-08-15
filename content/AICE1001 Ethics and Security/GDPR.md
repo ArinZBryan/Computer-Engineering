@@ -1,0 +1,38 @@
+#ethics-security/data 
+- Started in May 2018
+- National/International law that regulates how data is stored and used
+- Applies to all orgs processing, handling or storing the personal data of individuals residing in the EU, regardless of where the organisation is located.
+- ##### Key Roles
+	- **Data Controllers**: determine the purpose and means of processing personal data. Controllers must ensure contracts with *data processors* comply with the GDPR.
+	- **Data Processors**: process data on behalf of the *data controller*. Data processors are required to maintain records of all data and processing activities. In the event of a data breach, they are liable.
+- ##### Key Principles
+	- **Lawfulness, Fairness and Transparency**: Data processing must be lawful, fair and completely transparent to the subject whose data is being collected.
+	- **Purpose Limitation**: Data must be collected for specified, explicit and legitimate purposes and not used beyond the purposes agreed to before collection.
+	- **Purpose Minimisation**: Minimal data should be collected - don't collect any more than strictly necessary.
+	- **Accuracy**: Data should be correct and kept up to date
+	- **Storage Limitations**: Data should be kept for no longer than necessary
+	- **Integrity and Confidentiality**: Data should be processed in a manner that has appropriate security. For instance, security against unauthorised or unlawful processing and accidental loss or theft.
+- ##### Individual Rights
+	- **Right of Access**: You have the right to access your personal data, and obtain info about how it is processed.
+	- **Right to Rectification**: You can have your data corrected if it is inaccurate or incomplete.
+	- **Right of Erasure (Right to be Forgotten)**: You can request for data pertaining to you to be deleted (under certain circumstances).
+	- **Right to Restrict Processing**: You can request the restriction of processing of your data.
+	- **Right of Portability**: You can obtain your data, in a format that can be used across different services.
+	- **Right to Object**: Individuals can opt-out of all processing of their personal data.
+	- **Rights related to Automated Decision Making and Profiling**: you are protected against decisions made solely by automated mechanisms.
+- ##### Obligations for Organisations
+	- **Data protection by design and default**: Data should be protected always on purpose and by design. This should be the default.
+	- **Data Protection Impact Assessments (DPIAs)**: If data is being used to determine some high-risk outcome (e.g. immigration), an assessment must be made and made public.
+	- **Data Breach Notifications**: In the event of an breach, organisations are required to notify the relevant authorities (Information Commissioner's Office in the UK) and individuals.
+	- **Data Protection Officers**: Required for organisations to have a person or office that can be contacted for GDPR matters.
+	- **International Transfers**: If data is collected on citizens whom the GDPR applies, if transferred outside of GDPR countries, the GDPR still applies. There may also be further regulations.
+	- *Organisations in breach of the GDPR can face 20 million euro fines, or 4% of operating revenue, whichever is higher.*
+### DPIA
+DPIAs (Data Protection Impact Assessments) are the forms / documentation for the methods and reasons for data collection under the GDPR. This documentation is made publicly available, and will be viewed if the company is investigated regarding violations of the GDPR. Here are some of the items that are required to be on such documentation
+- Description of scope
+	- What is the nature of the data? Does it include special category or criminal offence data?. How much are you collecting? How long will you keep it? How many individuals are affected.
+- Description of context
+	- What is the nature of the relationship between the individuals and the data collector? How much control will they have of their data? Would the expect you to use their data the way you are? Does the data include data collected on children?
+- Description of purposes of processing
+- Identification of risks
+- Identification of risk reduction measures.

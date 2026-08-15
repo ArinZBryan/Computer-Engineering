@@ -1,0 +1,17 @@
+{
+  "name": "obsidian-css-snippets",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local Quartz 5 transformer plugin that reads CSS snippets from .obsidian/snippets (filtered by appearance.json's enabledCssSnippets, same as Obsidian itself) and injects them into every page, so vault-level CSS snippets don't have to be pasted into quartz.layout.ts by hand.",
+  "main": "./dist/index.js",
+  "quartz": {
+    "name": "obsidian-css-snippets",
+    "displayName": "Obsidian CSS Snippets",
+    "description": "Injects enabled CSS snippets from .obsidian/snippets into every page's <head>.",
+    "category": "transformer",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "defaultEnabled": true
+  }
+}

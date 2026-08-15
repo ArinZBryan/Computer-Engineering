@@ -1,0 +1,17 @@
+{
+  "name": "image-sizing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local Quartz 5 transformer plugin that applies Obsidian's `![alt|width]`/`![alt|widthxheight]` image-resize syntax to plain markdown images. obsidian-flavored-markdown only parses this syntax for wikilink embeds (`![[img.png|alt|width]]`), not for standard `![alt|width](img.png)` markdown images, so the width/height silently never applied for the latter.",
+  "main": "./dist/index.js",
+  "quartz": {
+    "name": "image-sizing",
+    "displayName": "Image Sizing",
+    "description": "Parses Obsidian's alt-text width/height suffix on plain markdown images and applies it as real width/height attributes.",
+    "category": "transformer",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "defaultEnabled": true
+  }
+}

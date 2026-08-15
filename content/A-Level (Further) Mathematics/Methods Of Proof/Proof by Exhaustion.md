@@ -1,0 +1,2 @@
+#maths/pure-maths/logic 
+This proof relies on there being a stipulation that needs proving, usually that for all $x$, $x \in \mathbb{N}$ or $x \in \mathbb{Z}^+$ something is true. In these cases, it is possible to prove that the statement is true for odd numbers ($2n+1$) and even numbers ($2n$), thus it is true for all $n$.

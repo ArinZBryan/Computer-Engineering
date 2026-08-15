@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "plugins": {
+    "image-sizing": {
+      "source": "./plugins/image-sizing",
+      "resolved": "C:\\Users\\arinb\\OneDrive\\Documents\\Computer_Engineering\\Computer-Engineering\\plugins\\image-sizing",
+      "commit": "local",
+      "installedAt": "2026-08-15T23:10:12.032Z"
+    },
+    "obsidian-css-snippets": {
+      "source": "./plugins/obsidian-css-snippets",
+      "resolved": "C:\\Users\\arinb\\OneDrive\\Documents\\Computer_Engineering\\Computer-Engineering\\plugins\\obsidian-css-snippets",
+      "commit": "local",
+      "installedAt": "2026-08-15T22:26:29.346Z"
+    },
+    "pdf-page": {
+      "source": "./plugins/pdf-page",
+      "resolved": "C:\\Users\\arinb\\OneDrive\\Documents\\Computer_Engineering\\Computer-Engineering\\plugins\\pdf-page",
+      "commit": "local",
+      "installedAt": "2026-08-15T18:24:57.420Z"
+    }
+  }
+}

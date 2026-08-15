@@ -1,0 +1,2 @@
+#ethics-security/data
+Using data ethically ensures that any data is collected, stored, analysed and shared in ways which respect individuals privacy, consent and rights. Further, in the use of that data, it should be such that the dataset does not lead do discrimination or bias, including biases in any algorithms trained using the data. Also, how any data is shared is something which is at least sometimes ethically dubious, so whether and where data should be shared must be considered.

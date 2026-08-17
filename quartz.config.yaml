@@ -1,12 +1,12 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: Computer Engineering Notes
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
   analytics:
-    provider: plausible
-  locale: en-US
+    provider: ""
+  locale: en-GB
   baseUrl: arinzbryan.github.io/Computer-Engineering
   ignorePatterns:
     - private
@@ -41,7 +41,7 @@ configuration:
         highlight: rgba(143, 159, 169, 0.15)
         textHighlight: "#b3aa0288"
 plugins:
-  - source: "./plugins/obsidian-css-snippets"
+  - source: ./plugins/obsidian-css-snippets
     enabled: true
     order: 5
   - source: "@quartz-community/created-modified-date"
@@ -77,9 +77,15 @@ plugins:
       enableVideoEmbed: true
       enableCheckbox: true
     order: 30
-  - source: "./plugins/image-sizing"
+  - source: ./plugins/image-sizing
     enabled: true
     order: 35
+  - source: ./plugins/markdown-embed-transclusion
+    enabled: true
+    order: 36
+  - source: ./plugins/image-caption
+    enabled: true
+    order: 37
   - source: "@quartz-community/github-flavored-markdown"
     enabled: true
     order: 40
@@ -97,10 +103,13 @@ plugins:
   - source: "@quartz-community/description"
     enabled: true
     order: 70
+  - source: ./plugins/math-block-normalizer
+    enabled: true
+    order: 75
   - source: "@quartz-community/latex"
     enabled: true
     options:
-      renderEngine: "mathjax"
+      renderEngine: mathjax
     order: 80
   - source: "@quartz-community/citations"
     enabled: false
@@ -157,7 +166,7 @@ plugins:
     enabled: true
   - source: "@quartz-community/canvas-page"
     enabled: true
-  - source: "./plugins/pdf-page"
+  - source: ./plugins/pdf-page
     enabled: true
   - source: "@quartz-community/content-page"
     enabled: true
@@ -175,6 +184,7 @@ plugins:
     layout:
       position: right
       priority: 10
+      display: all
   - source: "@quartz-community/search"
     enabled: true
     layout:

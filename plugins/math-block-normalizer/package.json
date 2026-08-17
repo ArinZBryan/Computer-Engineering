@@ -1,0 +1,17 @@
+{
+  "name": "math-block-normalizer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local Quartz 5 transformer plugin that rewrites single-line \"$$formula$$\" display equations onto three lines (opening $$, formula, closing $$) before remark-math parses them, so they're correctly classified as block/display math and get MathJax's display=\"true\" attribute (and therefore base.scss's centering rule) instead of being silently downgraded to inline math. Operates purely in-memory on each file's markdown source at build time; nothing on disk in content/ is changed.",
+  "main": "./dist/index.js",
+  "quartz": {
+    "name": "math-block-normalizer",
+    "displayName": "Math Block Normalizer",
+    "description": "Rewrites single-line $$formula$$ display equations onto three lines so remark-math classifies them as block math and they render centered.",
+    "category": "transformer",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "defaultEnabled": true
+  }
+}

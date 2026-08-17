@@ -1,0 +1,17 @@
+{
+  "name": "markdown-embed-transclusion",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local Quartz 5 transformer plugin that recognises this vault's Markdown-syntax note embeds (`![alt](Note.md#Heading)` — Obsidian's embed syntax when Wikilinks are disabled) and transcludes the target heading/page the same way `![[Note#Heading]]` wikilink embeds already do. obsidian-flavored-markdown only handles the wikilink form, so this syntax otherwise renders as a broken <img>.",
+  "main": "./dist/index.js",
+  "quartz": {
+    "name": "markdown-embed-transclusion",
+    "displayName": "Markdown Embed Transclusion",
+    "description": "Transcludes Markdown-syntax note/section embeds (![alt](Note.md#Heading)) the same way wikilink embeds are transcluded.",
+    "category": "transformer",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "defaultEnabled": true
+  }
+}

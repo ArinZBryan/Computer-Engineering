@@ -366,6 +366,17 @@ export function renderPage(
           </Body>
         </div>
       </body>
+      {/* The "Last modified"/"Created" byline comes from the vendored
+          @quartz-community/content-meta package, which spells the date out
+          in full (e.g. "16 Aug 2026") with no format option. Rather than
+          patch node_modules, rewrite it client-side from the <time>
+          element's machine-readable datetime attribute into a compact
+          numeric form, re-running after each SPA navigation. */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(function(){function c(){document.querySelectorAll(".content-meta time[datetime]").forEach(function(el){var d=new Date(el.getAttribute("datetime"));if(isNaN(d.getTime()))return;el.textContent=d.toLocaleDateString(document.documentElement.lang||"en-US",{day:"2-digit",month:"2-digit",year:"2-digit"});});}c();document.addEventListener("nav",c);})();`,
+        }}
+      />
       {pageResources.js
         .filter((resource) => resource.loadTime === "afterDOMReady")
         .map((res) => JSResourceToScriptElement(res, true))}

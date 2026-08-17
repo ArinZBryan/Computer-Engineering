@@ -129,6 +129,28 @@ a {
   }
 }
 
+// Drop the highlight "chip" background from internal links when they
+// appear inline in article body text, or in the file listing appended
+// to folder pages / same-named notes — keep it for nav/list contexts
+// (backlinks, sidebars).
+//
+// This has to fight @quartz-themes/default's obsidian-derived theme, which
+// styles these same links (classes "internal internal-link", plus
+// "tag-link" for tag pills) through a chain of increasingly specific,
+// attribute-gated rules — e.g.
+// `html[saved-theme="light"] body a.internal-link.tag-link` at specificity
+// (0,3,3), using CSS-variable-driven colors ("--pill-background", etc.)
+// that we don't control and that can change across theme updates. Rather
+// than keep out-specifying each new rule the theme adds, force this one
+// property with `!important`, which is exactly the case it's for: pinning
+// down a property against third-party CSS with mounting specificity.
+body article a.internal,
+.page-listing a.internal {
+  background-color: transparent !important;
+  padding: 0;
+  border-radius: 0;
+}
+
 .flex-component {
   display: flex;
 }
@@ -603,7 +625,13 @@ img {
   content-visibility: auto;
 }
 
-p > img + em {
+// Targets only genuine "caption directly under an image" markup
+// (`![](img.png)*Caption*`, nothing between them), marked by the
+// image-caption plugin - not a plain `img + em` combinator, which (since
+// CSS sibling combinators ignore text nodes) would also match any
+// unrelated italic phrase appearing later in the same paragraph after an
+// image, e.g. "![float-right|300](img.png)...called *a term*, more text.".
+p > em.image-caption {
   display: block;
   transform: translateY(-1rem);
 }

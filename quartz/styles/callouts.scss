@@ -33,6 +33,16 @@
   --callout-icon-example: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg> ');
   --callout-icon-quote: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>');
   --callout-icon-fold: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolyline points="6 9 12 15 18 9"%3E%3C/polyline%3E%3C/svg%3E');
+  // lucide "notebook-pen" - matches the icon content/.obsidian/snippets/callouts.css
+  // asks for on `[data-callout="proof"]` via `--callout-icon: notebook-pen`. That's an
+  // Obsidian-only convention: Obsidian ships the full lucide set and has its own JS that
+  // resolves `--callout-icon`'s value as an icon *name*. Quartz has no such JS - icons here
+  // are pure CSS (`mask-image: var(--callout-icon)` below), predefined per known callout
+  // type, same as every other `--callout-icon-*` above. "proof" isn't one of Quartz's ~13
+  // built-in types, so without this it falls through to the `[data-callout]` default below,
+  // and the *literal* value "notebook-pen" is not a valid mask-image - hence the unmasked
+  // filled rectangle.
+  --callout-icon-proof: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg>');
 
   &[data-callout] {
     --color: #448aff;
@@ -118,12 +128,39 @@
     --callout-icon: var(--callout-icon-quote);
   }
 
+  // The Obsidian snippet's own `--callout-color`/`--callout-icon` aren't Quartz's
+  // property names (--color/--border/--bg) or a valid mask-image, and its stylesheet
+  // is injected after this one (see plugins/obsidian-css-snippets), so its
+  // `--callout-icon: notebook-pen` would otherwise win the cascade over this rule
+  // for the property it *does* share the name of - hence !important, just on that
+  // one property, to make sure the real icon wins regardless of load order.
+  &[data-callout="proof"] {
+    --color: #36988e;
+    --border: #36988e44;
+    --bg: #36988e10;
+    --callout-icon: var(--callout-icon-proof) !important;
+  }
+
   &.is-collapsed {
     & > .callout-title > .fold-callout-icon {
       transform: rotateZ(-90deg);
     }
 
     .callout-content {
+      // .callout-content's rows are implicit ("auto"-sized), one per direct
+      // child; the & > * rule below forces every *item's own box* to 0, but
+      // an implicit "auto" row track is sized by more than just that - for a
+      // row holding an mjx-container (or an <img>), Chrome still reserves
+      // that item's intrinsic/content-derived size for the row itself,
+      // regardless of the item's own height, margin, min-height, or overflow
+      // all being set to 0 (verified: none of those alone or combined change
+      // it). The callout looked folded but kept a content-sized gap per math
+      // block or image. Forcing every implicit row's *track* size to 0
+      // directly is what actually collapses it; text-only rows were never
+      // affected because the ~1-line content they'd otherwise need already
+      // rounds down to nothing.
+      grid-auto-rows: 0;
+
       & > * {
         transition:
           height 0.1s cubic-bezier(0.02, 0.01, 0.47, 1),
@@ -131,6 +168,7 @@
           padding 0.1s cubic-bezier(0.02, 0.01, 0.47, 1);
         overflow-y: clip;
         height: 0;
+        min-height: 0;
         margin-bottom: 0;
         margin-top: 0;
         padding-bottom: 0;

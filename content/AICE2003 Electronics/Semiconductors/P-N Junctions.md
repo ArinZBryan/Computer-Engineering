@@ -84,6 +84,7 @@ Using diodes, it is possible to make a subset of the logic gates commonly used i
 | OR                            | AND                            |
 | ----------------------------- | ------------------------------ |
 | ![](../images/Diode%20OR.png) | ![](../images/Diode%20AND.png) |
+
 In these configurations, the 'OR' gate works simply by using diodes to prevent reverse flow of current. The 'AND' gate works by requiring current from A _and_ B to place both diodes in reverse bias, directing the current from the source _V_ to the output, rather than through the diodes to A or B.
 ###### Motivation for Diodes
 It is very important to notice though, that using only diodes, it is impossible to create a 'NOT' gate, or invert the signal in any way. Further, using diodes, we are also unable to amplify the signal at all. This is because diodes work entirely as a _passive_ element and are unable to add gain to a signal. To allow for these important functions, we turn to the [transistor](Transistors.md), in its several forms.

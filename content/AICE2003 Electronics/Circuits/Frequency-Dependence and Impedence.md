@@ -37,6 +37,7 @@ From the equations above, we can create a notion of a quantity that is 'similar'
 | Resistor                                 | Capacitor                                                                 | Inductor                                                       |
 | ---------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------- |
 | $R\frac{\sin(\omega t)}{\sin(\omega t)}$ | $\frac{1}{\omega C}\frac{\sin(\omega t)}{\sin(\omega t + \frac{\pi}{2})}$ | $L\omega\frac{\sin(\omega t)}{\sin(\omega t - \frac{\pi}{2})}$ |
+
 Ignoring the sin/sin ratio for a second, we can see that the 'resistance equivalent' for resistors is equal to the resistance, the expected result, and that for capacitors, it is related to the reciprocal of the frequency and capacitance and for inductors, is equal to the inductance and the frequency.
 
 ![](../images/Passive%20Component%20Frequency%20Analysis.png)
@@ -49,6 +50,7 @@ Plotting on a log/log graph allows us to more easily ascertain the asymptotic be
 | **Inductor**  | Tends towards an open circuit | Tends towards a wire          |
 | **Resistor**  | Does not care about frequency | Does not care about frequency |
 | **Capacitor** | Tends towards a wire          | Tends towards an open circuit |
+
 Simply put - inductors want to pass DC current and capacitors want to pass high frequency AC current.
 
 We then say that idealised capacitors and inductors have no resistance - they have _reactance_, a ratio between voltage and current at a given frequency that causes a $\pm90^\circ$ phase change between current and voltage
@@ -58,6 +60,7 @@ Looking at the sin/sin ratio once more, it does not appear to immediately give a
 |               | Resistor | Capacitor             | Inductor    |
 | ------------- | -------- | --------------------- | ----------- |
 | **Impedance** | $R$      | $\frac{-i}{\omega C}$ | $L\omega i$ |
+
 This has a nice physical interpretation, for some theoretical component:
 - $Re(z)$ is the resistance
 - $Im(z)$ is the reactance

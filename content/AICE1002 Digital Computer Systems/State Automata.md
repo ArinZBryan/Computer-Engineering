@@ -24,24 +24,24 @@ There is no clock, the state changes are entirely driven by the inputs.
 ## Examples
 ### Traffic Light
 A traffic light is an example of a four-state Moore machine that takes in no inputs, and cycles ad infinitum. It has three outputs. To further complicate the system, pedestrian crossing buttons, more roads or timings could be added.
-![Traffic Light States](images/State_Automata/Traffic%20Light%20States.png)
+![centre|500](./images/State_Automata/Traffic%20Light%20States.png)
 > Above are the different states a standard UK traffic light cycles through, from left to right. Below is the state machine diagram that can be constructed from this. The *state label* is an arbitrary name given to a state, while the *state output* is the output value of the state automata during the state transition it annotates
 
-![Traffic Light State Diagram](images/State_Automata/Traffic%20Light%20State%20Diagram.png)
+![centre|300](./images/State_Automata/Traffic%20Light%20State%20Diagram.png)
 ### Electronic "Die"
 A simple implementation of an electronic die is a counter that cycles through the output values. It must cycle sufficiently quickly to ensure that the user is unable to consistently time their presses of a button to get the same output. This example will look at an example electronic '6-sided die'.
 A basic design for such a circuit would look like the following:
-![](images/State_Automata/Die%20Block%20Design.png)
+![centre|500](./images/State_Automata/Die%20Block%20Design.png)
 A clock, with a switch to disable it feeds into a counter, so that the counter value will only change if the switch is held down. The counter then outputs three bits to a display, this is the minimum number of bits required to store 6 states.
 ##### The Simple Part
 The most simple part is the gated clock. The gate here can simply be an *and gate* connected to the output of a clock. Such a clock can be considered its own element, and does not need to be designed.
 ##### The Complex Part (Done Poorly)
 At first glance, a simple way to implement a looping counter is as follows:
-![](images/State_Automata/Bad%20Counter%20Rollover%20Design.png)
+![centre|400](./images/State_Automata/Bad%20Counter%20Rollover%20Design.png)
 By connecting the counter's pre-set line to some combination of its outputs *and*'ed together, we can produce a clock that will count up on the clock being pulled high, and reset, when the value gets too high. However, this simple design has a major issue in the use as a die. It is not fair. When implementing a dice as we are, each number should be on the output line for the same amount of time. However, with this design this is obviously not true. Sure, the time is the same for 2, 3, 4, 5 and 6, but when the counter rolls over to 7, the and gate on the output introduces a delay, thus introducing a state we don't want (7), and shortening the 1 state.
 ##### The Complex Part (Done Right)
 Instead of doing the above, we can construct a state machine.
-![State Machine Diagram for a counter](images/State_Automata/Counter%20State%20Machine%20Diagram.png)
+![centre|500](./images/State_Automata/Counter%20State%20Machine%20Diagram.png)
 By assigning the output values of the state machine such that they correspond to the binary value of the label of the next state we can eliminate some internal logic, though this is an optimisation that is only applicable here because we also want numbers out, and that there are no branches or inputs.
 ###### State Machine Tables
 From this, we derive a simple table that describes the state machine in the same way as the graph:
@@ -68,9 +68,11 @@ To make this table more useful, we can instead represent each state in binary. H
 | 101           | 110        | 1        | 0        | 1        |
 | 110           | 001        | 1        | 1        | 0        |
 Designing a circuit in the abstract to perform these functions is not difficult. Using this as an example, this is the diagram:
-![3 Bit Rollover Counter](images/State_Automata/3%20Bit%20Rollover%20Counter.png)
+![centre|500](./images/State_Automata/3%20Bit%20Rollover%20Counter.png)
 ###### Maps
-![float-right](images/State_Automata/Excitation%20To%20Transition%20Maps.png)The next step is to derive the correct combinational logic to produce the next state, given the current one. To do this, we use a [Karnaugh Map](Combinatorial%20Logic.md) per bit of state stored. In this case, this K-Map is called the *Excitation Map*. 
+The next step is to derive the correct combinational logic to produce the next state, given the current one. To do this, we use a [Karnaugh Map](Combinatorial%20Logic.md) per bit of state stored. In this case, this K-Map is called the *Excitation Map*. 
+![float-right|250](./images/State_Automata/Excitation%20To%20Transition%20Maps.png)
+
 > These are the middle K-Maps in the diagram.
 
 As there is no guarantee that the output value is the same as the internal representation of the state (as it just so happens to be here), we would also create a mapping from the internal representation of the current state (the leftmost column in the top table above) to the desired output (the rightmost column in the top table above). The method of deriving this is very similar to the method for deriving the excitation map. We simply create a Karnaugh map for each bit of the internal state and map to the desired output value. From there to get the required logic would just require performing the standard simplifications on Karnaugh maps.
@@ -104,7 +106,9 @@ Using the above graph, we can construct the transition table:
 | 2             | 3                      | 1                      | 0      |
 | 3             | 4                      | 2                      | 0      |
 | 4             | 5                      | 3                      | 0      |
+
 Here, because the output is not equal to the state, even in binary. Thus, we need to do a little more work: optimisation. We can attempt to optimise a state automata by trying to 'fold' it into a k-map. 
+
 ![](images/State_Automata/UpDown%20Counter%20Folded%20Transition%20Map.png)
 The above are three attempts at folding the states, in order into a 3-bit K-map. Ideally, all the links would be green, that is states that are capable of being transitioned between are next to each other in the map. As it happens, with this specific state automata, it is impossible to do this with only adjacent links. When links are non-adjacent (red), it is not important how long they are. The representation of each state then is determined by the row and column in the K-map. For a synchronous system, this is not too important, other than reducing the power consumption of the circuit, and making it simpler. However, when designing for asynchronicity, which won't be covered in this module, it is crucial.
 From this, we now create the binary state table from the arbitrary folding labelled (2):

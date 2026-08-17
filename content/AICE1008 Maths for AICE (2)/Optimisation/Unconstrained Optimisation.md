@@ -21,7 +21,8 @@ $$
 From the Taylor expansion, we can also identify one further condition for $f(\underline{x^*})$ to be a minimum point: $\mathbf{H}f(\underline{x^*})>0$. Expanding this out, we can distil these conditions into a single inequality:
 $$
 f(\underline{x})>f(\underline{x^*})
-$$where $\mathbf{H}f(\underline{x^*})$ must be positive semidefinite, ie. has eigenvalues that are all $\ge 0$. 
+$$
+where $\mathbf{H}f(\underline{x^*})$ must be positive semidefinite, ie. has eigenvalues that are all $\ge 0$. 
 ### Line Search
 ![float-right](../Images/line_search_album_cover.png)*Line Search* is a generalised algorithm for finding the minimum of some function. To do it, you start with a random point, find the gradient vector and draw a line in the direction of the gradient. Along this line, a cross section of the plot is taken, reducing the optimisation problem down to one dimension, a computationally simpler problem. From this, a new point is chosen and the process repeats, finding the gradient vector, taking a cross section and using that, smaller, optimisation problem to inform a further step towards the minimum.
 ##### Mathematical Definition

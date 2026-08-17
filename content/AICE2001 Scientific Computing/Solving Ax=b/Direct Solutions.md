@@ -23,6 +23,7 @@ $$\mathbf{A_{ug}}^{(0)}=\left(\begin{array}{cccc|c}
 \vdots&\vdots&\ddots&\vdots&\vdots \\
 {a_{n1}}^{(0)}&{a_{n2}}^{(0)}&\dots&{a_{nn}}^{(0)}&{b_n}^{(0)}
 \end{array}\right)$$
+
 Gaussian Elimination is broken down into 'passes', each of which is broadly made of two steps - permutation and linear combination. First the permutation step is performed, where any number rows can be swapped any number of times. Then is the linear combination (elimination) step, where we eliminate the elements of the $k^{\text{th}}$ column, where $k$ is the pass number. We then repeat these passes until we have an upper triangular matrix we can perform backward substitution on.
 
 For the first pass, we want to eliminate the first column except for $a_{11}$. This is done by subtracting from each row below a copy of the first row scaled by $\frac{a_{k1}}{a_{11}}$.
@@ -33,6 +34,7 @@ $$\mathbf{A_{ug}}^{(1)}=\left(\begin{array}{cccc|c}
 \vdots&\vdots&\ddots&\vdots&\vdots \\
 0&{a_{n2}}^{(1)}&\dots&{a_{nn}}^{(1)}&{b_n}^{(1)}
 \end{array}\right)$$
+
 Following this, we then permute and then eliminate the second column's elements below ${a_{22}}^{(1)}$. This is done by subtracting from each row below a copy of the second row scaled by $\frac{a_{k2}}{a_{22}}$.
 
 Note that the permutation steps have not been shown.

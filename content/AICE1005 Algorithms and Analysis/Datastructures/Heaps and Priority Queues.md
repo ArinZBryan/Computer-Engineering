@@ -7,9 +7,9 @@ A *heap* (not to be confused with the same term referring to an area of memory i
 One important thing to note for heaps is their time complexity. More specifically, the time complexity of their two most important operations, `add` and `remove_min`. Both of these operations require swapping elements around to ensure that the heap remains one at all times. As the number of swaps depends on the depth of the tree, which as the tree is *complete* is $\Theta(\log(n))$, the time complexity of these crucial operations must be $O(\log(n))$. One small exception is that `add` may require [expanding the array](Dynamic%20Arrays.md), which also has an associated cost which may be large, but is amortized over many operations, making the cost on average quite small.
 ##### Using Arrays for Heaps
 Because heaps are *complete*, we are able to easily label each of the nodes in the heap so they can be slotted next to each other. Specifically, using an ordering going from top to bottom, left to right. ![centre|500](../Images/Array%20Heap.png) Further, by inspection, we can see that for any given parent node with an index $i$ in the [array](Abstract%20Data%20Types.md#Lists), we can get the indexes of the node's child nodes using the formulas:
-$$
-\begin{align}i_{child1} = i_{parent}\times 2 + 1\\i_{child2} = i_{parent}\times 2 + 2\end{align}
-$$Similarly, we can get the index of a parent node using the following formula:
+$$i_{child1} = i_{parent}\times 2 + 1$$
+$$i_{child2} = i_{parent}\times 2 + 2$$
+Similarly, we can get the index of a parent node using the following formula:
 $$
 i_{parent} = \lfloor i_{child} - 1\rfloor
 $$

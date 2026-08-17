@@ -63,6 +63,7 @@ We need the result of the first instruction's EX stage by the second's EX stage,
 | --- | --- | --- | --- | --- | --- | --- |
 | add | IF  | ID  | EX  | MEM | WB  |     |
 | sub |     | IF  | ID  | EX  | MEM | WB  |
+
 But instead, we can add another data pathway to the execution unit - a loopback directly from its output. Then, if we detect such a dependency, we take input from the last cycle's output. This is the most basic form of forwarding. 
 
 Now, consider the second pair of instructions: ``
@@ -78,6 +79,7 @@ Here, we need the value of the first instruction after the MEM stage as input to
 | lw     | IF  | ID     | EX     | MEM    | WB     |        |     |
 | BUBBLE |     | BUBBLE | BUBBLE | BUBBLE | BUBBLE | BUBBLE |     |
 | sub    |     |        | IF     | IF     | EX     | MEM    | WB  |
+
 Finally, when we're executing a branching instruction, adding a forward from the execute step back to the instruction fetch allows us to to bubble only once when we encounter a branch, rather than essentially flushing the pipeline completely.
 
 |        | 1   | 2      | 3      | 4      | 5      | 6      | 7   |
@@ -85,7 +87,8 @@ Finally, when we're executing a branching instruction, adding a forward from the
 | beq    | IF  | ID     | EX     | MEM    | WB     |        |     |
 | BUBBLE |     | BUBBLE | BUBBLE | BUBBLE | BUBBLE | BUBBLE |     |
 | addi   |     |        | IF     | ID     | EX     | MEM    | WB  |
-Putting these all together gives the three main forwarding paths:
+
+these all together gives the three main forwarding paths:
 
 ![](images/Triple%20Forwarding%20Diagram.png)
 ### Unexpected Events
@@ -115,6 +118,7 @@ This code contains two structural hazards. While this might not be immediately o
 | nop    |     |     |     |     |     |     |     |     |     |     |     |
 | Bubble |     |     |     |     |     |     |     | IF  | ID  | EX  | MEM |
 | sw     |     |     |     |     |     |     |     |     | IF  | ID  | EX  |
+
 Even with forwarding, there are still bubbles. This is because, for both adds, they immediately use the value loaded in from memory. Without forwarding, this would require many bubbles to place the load's WB before the add's ID. With forwarding, we can reduce this to one bubble, forwarding from the load's MEM to the add's EX directly. But, there is still a bubble. 
 
 However, this is not required. Without changing the result of the program, we can remove both bubbles at once!
@@ -145,4 +149,5 @@ It would not be unusual to be given a table of the time taken to compute via the
 | Store (`sw`) | 200ps             | 100ps              | 200ps     | 200ps         |            |
 | R-format     | 200ps             | 100ps              | 200ps     |               | 100ps      |
 | Branch       | 200ps             | 100ps              | 200ps     |               |            |
+
 Here, we can see that the longest an instruction can take is a load instruction, as it requires usage of every pipeline stage. This means that for a single-stage pipeline the critical path is 200+100+200+200+100 = 800ps. This means the maximum clock speed is 1/800ps = 1.25GHz. For a full 5-stage pipeline, the longest critical path is instruction fetch, execution or memory access (they all take 200ps), which gives a maximum clock speed of 1/200ps = 5GHz.

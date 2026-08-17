@@ -8,6 +8,7 @@ $$V_{m,n}=V_n(x_m, x_{m-1},\dots,1)=\begin{pmatrix}
 \vdots&\vdots&\ddots&\vdots&\vdots\\
 {x_n}^m&{x_n}^{n-1}&\dots&x_n&1
 \end{pmatrix}$$
+
 > [!important]- Ordering
 > It is not uncommon to see Vandermonde matrices written with the order of elements in each row flipped. That is - you start at $x^0$ and move up to $x^m$, rather than, as shown, starting at $x^m$ and working down to 1. This does not significantly change the calculations, other than that the results will be given in a different order. That is, if the output vector is
 > $$\mathbf{a}=\begin{bmatrix}a_0\\ a_1\\\vdots\\ a_k\end{bmatrix}$$

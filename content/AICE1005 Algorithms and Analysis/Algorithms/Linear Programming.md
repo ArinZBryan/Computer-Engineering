@@ -6,7 +6,8 @@ Suppose we go shopping at a shop that carries the set of foodstuffs $f\in\mathca
 Thus, we can express this constraint as
 $$
 \forall v\in\mathcal{V}\hspace{24pt}\sum_{f\in\mathcal{F}}A_{v,f}x_f\ge b_v
-$$ and the minimisation problem as $\min_xp\cdot x$ subject to $\mathbf{A}\underline{x}\ge \underline{b}$ and $\underline{x}\ge \underline{0}$.
+$$
+and the minimisation problem as $\min_xp\cdot x$ subject to $\mathbf{A}\underline{x}\ge \underline{b}$ and $\underline{x}\ge \underline{0}$.
 
 >[!note]- Inequalities for vectors
 >In this example and all others here, vector inequality is defined as the inequalities of all of the components of the two vectors and'ed together. IE.

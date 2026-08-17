@@ -8,6 +8,7 @@ Because of the structure of a bipolar junction transistor, they may in principle
 | NPN                                 | PNP                                      |
 | ----------------------------------- | ---------------------------------------- |
 | ![](../images/BJTs/NPN%20Transistor.png) | ![](../images/BJTs/PNP%20Transistor.png) |
+
 The three terminals of a BJT are labelled as the _emitter_, _base_ and _collector_. This is because the _emitter_ emits the majority carrier within the transistor and the _collector_ collects it. The _base_ is not named the way it is for any particular reason. This nomenclature does not change between NPN and PNP transistors.
 
 For the rest of this section, NPN transistors will be considered. However, all the same theory applies to PNP transistors, just in reverse. Electrons and holes flow in opposite directions and where one part of the transistor is in forward bias in an NPN transistor, it will be in reverse bias in a PNP transistor.

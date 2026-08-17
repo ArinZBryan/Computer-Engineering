@@ -1,3 +1,45 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+// Folder-listing tweaks: the appended file listing on folder pages (and
+// notes that share their enclosing folder's name) reserves far more
+// horizontal space than each entry needs.
+.page-listing {
+  li.section-li > .section {
+    // The title column was fixed at 3fr of the row's width, which leaves a
+    // large gap to the right of short titles before the tags column
+    // starts. Let it hug its content instead, and add a gap between
+    // columns now that they're sized to content rather than fixed ratios.
+    grid-template-columns: fit-content(8em) auto 1fr;
+    column-gap: 1rem;
+  }
+
+  ul.tags {
+    // Tag pills inherit the browser's default <ul> list indent (~40px);
+    // also lay them out in a row instead of the default stacked list-items
+    // so they share one line instead of each tag taking its own, and pin
+    // them to the right of their (now flexible-width) column so they sit
+    // away from the title rather than flush against it.
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.3rem;
+
+    li {
+      // Keep a single tag's own text from folding onto a second line;
+      // if the whole set doesn't fit, the row wraps instead (flex-wrap
+      // above), rather than breaking mid-tag.
+      white-space: nowrap;
+    }
+
+    a.tag-link {
+      // Slightly smaller than body text so more tags fit per line.
+      font-size: 0.8em;
+    }
+  }
+}

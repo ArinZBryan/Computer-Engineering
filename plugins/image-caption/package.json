@@ -1,0 +1,17 @@
+{
+  "name": "image-caption",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local Quartz 5 transformer plugin that marks a genuine \"image immediately followed by an italic caption\" paragraph (![](img.png)*Caption*, nothing between them) with a dedicated class, so base.scss's caption styling can select on that instead of the `p > img + em` combinator, which also matches any later, unrelated italic phrase in the same paragraph since CSS sibling combinators ignore intervening text.",
+  "main": "./dist/index.js",
+  "quartz": {
+    "name": "image-caption",
+    "displayName": "Image Caption",
+    "description": "Marks genuine image captions (an <em> immediately after an image, nothing between them) so caption styling doesn't also catch unrelated italic text later in the same paragraph.",
+    "category": "transformer",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "defaultEnabled": true
+  }
+}

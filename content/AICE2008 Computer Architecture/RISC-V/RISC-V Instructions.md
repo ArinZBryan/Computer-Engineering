@@ -9,8 +9,8 @@
 | F                | Adds single-precision floating-point arithmetic               |
 | C                | Adds 16-bit compressed versions of common instructions        |
 | D, Q, L, V, B, T | Further floating point extensions and other future extensions |
+ 
  In this module, the `RV32IMC` instruction set is being focussed on
-
 ### Instruction Types
 All instructions in `RISC32I` can be categorised into six categories:
 - Register-Register (R)

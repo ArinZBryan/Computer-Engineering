@@ -78,6 +78,7 @@ In the worst case, a completely sparse tree, accessing elements is a linear sear
 |                     | Best Case (Full Tree) | Random            | Worst Case (Sparse Tree) |
 | ------------------- | --------------------- | ----------------- | ------------------------ |
 | **Time Complexity** | $\Theta(log_2(n))$    | $\Theta(\log(n))$ | $\Theta(n)$              |
+
 Unfortunately, the worst case scenario can be concocted simply by adding the elements in order (not an uncommon event). Thus, it is necessary to be able to change the structure of the tree while preserving the binary search ordering of it. To do this, we can use a technique called 'rotation'.
 #### Rotations
 There are four types of rotation that can be applied to a tree:
@@ -86,7 +87,12 @@ There are four types of rotation that can be applied to a tree:
 - Left-Right Rotation
 - Right-Left Rotation
 ##### Left/Right Rotations
-![float-right|400](../Images/Tree%20Rotate%20Left.png)![float-right|400](../Images/Tree%20Rotate%20Right.png)A left or right rotation is performed to balance a tree when the 'heavier' part of the tree is on the 'outside' of the tree, that is, the root of the 'heavier' subtree can be reached exclusively by moving left or right from the pivot node. By exploiting the natural ordering of subtrees in a binary tree, it is possible to swap the root node of a (sub)tree while preserving all other properties of the binary tree.
+|               Left Rotation                |                      Right Rotation                      |
+| :----------------------------------------: | :------------------------------------------------------: |
+| ![400](../Images/Tree%20Rotate%20Left.png) | ![float-right\|400](../Images/Tree%20Rotate%20Right.png) |
+
+A left or right rotation is performed to balance a tree when the 'heavier' part of the tree is on the 'outside' of the tree, that is, the root of the 'heavier' subtree can be reached exclusively by moving left or right from the pivot node. By exploiting the natural ordering of subtrees in a binary tree, it is possible to swap the root node of a (sub)tree while preserving all other properties of the binary tree.
+
 To perform a left rotation the below code can be used. *To adapt it to perform a right rotation, simply swap any references to the right child of a node with references to the left child and vice versa.*
 
 ```cpp

@@ -5,13 +5,16 @@ To make such a thing, we can start in one dimension and expand further.
 The most basic of the one-dimensional integrals is the [Riemann Integral](../../AICE1004%20Maths%20for%20AICE%20(1)/Calculus/Integral%20Calculus.md#Definite%20Integration). Here, we sum the areas of increasingly smaller slices of the area between the curve and the $x$-axis. This is defined more formally as:
 $$
 A_{rea}=\lim_{\Delta x\to 0^+}\sum^n_{k=1}f(x^*_k)\cdot\Delta x
-$$Or using a form more closely applicable to double integrals:
+$$
+Or using a form more closely applicable to double integrals:
 $$
 A_{rea}=\lim_{\Delta n\to\infty}\sum^n_{k=1}f(x^*_k)\cdot\Delta x_k
-$$ ![float-right|300](Images/Double%20Integral%20graph.png)We can then extend this definition to two dimensions via the following:
+$$
+![float-right|300](Images/Double%20Integral%20graph.png)We can then extend this definition to two dimensions via the following:
 $$
 V_{olume} = \lim_{n\to\infty}\sum^n_{k=1}f(x^*,y^*)\Delta A_k
 $$
+
 This is then notated as $\iint_Rf(x,y)dxdy|R=\{(x,y): a<x<b, c<y<d\}$ or $\int_c^d\int_a^bf(x,y)dxdy$. From this notation we can see that this is actually just the integral of an integral. Thus, we can calculate double integrals using this form.
 
 You may also see integrals like $\int^b_a\int^d_{cy}f(x)dxdy$. Here, the inner integral has a bound that depends on $y$, the variable of the outer integral. It is always possible to swap this around to make a double integral with the bounds of the inner integral depending on $x$ instead.

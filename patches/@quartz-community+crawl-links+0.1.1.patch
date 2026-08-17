@@ -1,0 +1,25 @@
+diff --git a/node_modules/@quartz-community/crawl-links/dist/index.js b/node_modules/@quartz-community/crawl-links/dist/index.js
+index 5005175..e73142a 100644
+--- a/node_modules/@quartz-community/crawl-links/dist/index.js
++++ b/node_modules/@quartz-community/crawl-links/dist/index.js
+@@ -107,7 +107,19 @@ function transformInternalLink(link) {
+ }
+ function transformLink(src, target, opts) {
+   const targetSlug = transformInternalLink(target);
+-  if (opts.strategy === "relative") {
++  if (opts.strategy === "relative" || /^\.\.?\//.test(target)) {
++    // An explicit relative prefix (./ or ../) was written by hand in the
++    // source markdown, so honor it literally instead of routing it through
++    // "shortest"/"absolute" resolution below. That path assumes targetSlug
++    // is already root-relative and re-prepends a fresh root-relative
++    // prefix on top of it (via pathToRoot + canonicalSlug), which is wrong
++    // for an explicitly-relative target — it's relative to the *source
++    // file's* directory, not the vault root — and its
++    // `targetSlug.slice(".".length)` also only strips a single placeholder
++    // ".", not a real ".." written by the author, leaving a stray "."
++    // and one extra ".." level in the emitted href/src (breaks any
++    // relative asset link, e.g. images, that isn't itself a content page
++    // discoverable via "shortest" filename search).
+     return targetSlug;
+   } else {
+     const effectiveSrc = !endsWith(src, "index") && opts.allSlugs.includes(`${src}/index`) ? `${src}/index` : src;
